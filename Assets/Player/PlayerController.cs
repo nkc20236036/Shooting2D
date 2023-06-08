@@ -16,7 +16,8 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float speed = 5;
+        float speed = 10;
+        Vector3 dir = Vector3.zero;
         dir.x = Input.GetAxisRaw("Horizontal");
         dir.y = Input.GetAxisRaw("Vertical");
 
@@ -33,7 +34,7 @@ public class PlayerController : MonoBehaviour
         }
         else if (dir.y == 1)
             {
-                anim.Play("PlayerL");
+                anim.Play("Player L");
             }
         else if (dir.y == -1)
         {

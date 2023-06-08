@@ -12,7 +12,7 @@ public class GameDirector : MonoBehaviour
 
     public Image timeGauge;
 
-    float LastTime;
+  public static  float LastTime;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +23,9 @@ public class GameDirector : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        kyori++;
+        kyoriLabel.text = kyori.ToString("D6") + "km";
+
         LastTime -= Time.deltaTime;
         timeGauge.fillAmount = LastTime / 100f;
 
@@ -31,8 +34,7 @@ public class GameDirector : MonoBehaviour
             SceneManager.LoadScene("GameScene");
         }
 
-        kyori++;
-        kyoriLabel.text = kyori.ToString("D6") + "km";
+       
 
     }
 }
