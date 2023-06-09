@@ -5,12 +5,15 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     Vector3 dir = Vector3.zero;
-
+    GameObject ShotPre;
+    float timer;
+    int power = 0;
     Animator anim;
     // Start is called before the first frame update
     void Start()
     {
         anim = GetComponent<Animator>();
+        ShotPre = (GameObject)Resources.Load("bulletPre");
     }
 
     // Update is called once per frame
@@ -27,18 +30,55 @@ public class PlayerController : MonoBehaviour
         pos.y = Mathf.Clamp(pos.y, -5f, 5f);
         transform.position = pos;
 
-
-        if (dir.y == 0)
+        if (Input.GetKeyDown(KeyCode.G))
         {
-            anim.Play("Player");
+            power = (power + 1) % 18;
         }
-        else if (dir.y == 1)
+        timer += Time.deltaTime;
+        if (Input.GetKey(KeyCode.Z) && timer > 0.3f)
+        {
+
+
+            for (int i = -power; i < power + 1; i++)
+            {
+                Vector3 po = transform.position + new Vector3(0, 0.5f, 0);
+
+                Vector3 r = transform.rotation.eulerAngles + new Vector3(0, 15f * i, 0);
+                Quaternion rot = Quaternion.Euler(r);
+
+
+                Instantiate(ShotPre, po, rot);
+            }
+            timer = 0;
+
+            if (dir.y == 0)
+            {
+                anim.Play("Player");
+            }
+            else if (dir.y == 1)
             {
                 anim.Play("Player L");
             }
-        else if (dir.y == -1)
-        {
-            anim.Play("PlayerR");
+            else if (dir.y == -1)
+            {
+                anim.Play("PlayerR");
+            }
+            if (Input.GetKey(KeyCode.Z) && timer > 0.3f)
+            {
+
+
+                for (int i = -power; i < power + 1; i++)
+                {
+                    Vector3 po = transform.position + new Vector3(0, 0.5f, 0);
+
+                    Vector3 r = transform.rotation.eulerAngles + new Vector3(0, 15f * i, 0);
+                    Quaternion rot = Quaternion.Euler(r);
+
+
+                    Instantiate(ShotPre, pos, rot);
+                }
+                timer = 0;
+            }
         }
     }
-    }
+}
