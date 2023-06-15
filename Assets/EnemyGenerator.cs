@@ -31,7 +31,7 @@ public class EnemyGenerator : MonoBehaviour
 
             delta = 0;
 
-            span -= (span >= 0.5f) ? 0.01f : 0f;
+            span -= (span >= 0.8f) ? 0.01f : 0f;
         }
     }
 }

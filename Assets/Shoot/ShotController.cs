@@ -5,15 +5,15 @@ using UnityEngine;
 public class ShotController : MonoBehaviour
 {
     float speed = 8f;
-    Transform player;
+    //Transform player;
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.Find("Player").transform;
+        //player = GameObject.Find("Player").transform;
 
-        transform.position = player.position + new Vector3(0, 0.5f, 0);
+        //transform.position = player.position + new Vector3(0, 0.5f, 0);
 
-        transform.forward = player.forward;
+        //transform.forward = player.forward;
     }
 
     // Update is called once per frame
@@ -23,10 +23,10 @@ public class ShotController : MonoBehaviour
 
         if (transform.position.magnitude > 70f)
         {
-            transform.position = new Vector3(0, 0.5f, 0);
-        }
-        if (transform.position.magnitude > 70f)
-        {
+        //    transform.position = new Vector3(0, 0.5f, 0);
+        //}
+        //if (transform.position.magnitude > 70f)
+        //{
             Destroy(gameObject);
         }
     }
