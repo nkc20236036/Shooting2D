@@ -12,11 +12,12 @@ public class PlayerController : MonoBehaviour
     int power = 0;
     Animator anim;
     float speed;
-
+    
 
     // Start is called before the first frame update
     void Start()
     {
+        
         anim = GetComponent<Animator>();
         ShotPre = (GameObject)Resources.Load("bulletPre");
     }
@@ -35,25 +36,8 @@ public class PlayerController : MonoBehaviour
         pos.y = Mathf.Clamp(pos.y, -5f, 5f);
         transform.position = pos;
 
-        if (Input.GetKeyDown(KeyCode.G))
-        {
-            power = (power + 1) % 18;
-        }
-        timer += Time.deltaTime;
-        if (Input.GetKey(KeyCode.Z) && timer > 0.3f)
-        {
-
-
-            for (int i = -power; i < power + 1; i++)
-            {
-                Vector3 po = transform.position + new Vector3(0, 0.5f, 0);
-
-                Vector3 r = transform.rotation.eulerAngles + new Vector3(0, 15f * i, 0);
-                Quaternion rot = Quaternion.Euler(r);
-
-
-                Instantiate(ShotPre, po, rot);
-            }
+        
+        
             timer = 0;
 
             if (dir.y == 0)
@@ -68,6 +52,11 @@ public class PlayerController : MonoBehaviour
             {
                 anim.Play("PlayerR");
             }
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            power = (power + 1) % 18;
+        }
+        timer += Time.deltaTime;
             if (Input.GetKey(KeyCode.Z) && timer > 0.3f)
             {
 
@@ -86,4 +75,3 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
-}

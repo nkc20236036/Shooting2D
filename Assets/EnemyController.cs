@@ -17,7 +17,7 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float speed = 8;
+        float speed = 4;
         dir = Vector3.left; if (transform.position.x < -9f)
             {
                 Vector3 pos = transform.position;

@@ -11,7 +11,7 @@ public class EnemyGenerator : MonoBehaviour
     void Start()
     {
         delta = 0;
-        span = 1f;
+        span = 2f;
     }
 
     // Update is called once per frame
