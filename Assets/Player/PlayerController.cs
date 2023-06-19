@@ -12,14 +12,14 @@ public class PlayerController : MonoBehaviour
     int power = 0;
     Animator anim;
     float speed;
-    
+    public GameObject nannkoitu;
 
     // Start is called before the first frame update
     void Start()
     {
         
         anim = GetComponent<Animator>();
-        ShotPre = (GameObject)Resources.Load("bulletPre");
+        ShotPre = (GameObject)Resources.Load("ShotPre");
     }
 
     // Update is called once per frame
@@ -36,7 +36,10 @@ public class PlayerController : MonoBehaviour
         pos.y = Mathf.Clamp(pos.y, -5f, 5f);
         transform.position = pos;
 
-        
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            Instantiate(nannkoitu);
+        }
         
             timer = 0;
 
@@ -52,10 +55,7 @@ public class PlayerController : MonoBehaviour
             {
                 anim.Play("PlayerR");
             }
-        if (Input.GetKeyDown(KeyCode.G))
-        {
-            power = (power + 1) % 18;
-        }
+       
         timer += Time.deltaTime;
             if (Input.GetKey(KeyCode.Z) && timer > 0.3f)
             {
