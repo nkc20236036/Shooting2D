@@ -30,7 +30,6 @@ public class EnemyShotController : MonoBehaviour
     void Update()
     {
         // ˆÚ“®ˆ—
-
         transform.position += dir.normalized * speed * Time.deltaTime;        
     }
 
